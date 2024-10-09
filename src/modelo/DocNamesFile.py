@@ -16,5 +16,5 @@ class DocNamesFile:
             print(f"Ocorreu um erro ao ler o arquivo: {e}")
 
     def print_names(self):
-        for name in self.names_list :
-            print(self.names_list[name])
+        for name in self.names_list:
+            print(name)

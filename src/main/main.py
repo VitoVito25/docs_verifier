@@ -1,4 +1,4 @@
-from src.modelo.DocNamesFile import *
+from modelo.DocNamesFile import *
 
 def main():
     caminho_do_arquivo = "docNamesFile.txt"
