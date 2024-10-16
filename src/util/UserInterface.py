@@ -27,7 +27,7 @@ Relatório de Processamento:
 - Total de Exceções: {totalExceptionFiles}
 - Exceções por Arquivos Não Encontrados: {len(doc_folder.notFoundFiles)}
 - Exceções por Arquivos Corrompidos ou Senha: {len(doc_folder.corruptedFiles)}
-- Exceções por Arquivos Nao Encontrados: {len(doc_folder.notFoundFiles)}
+- Exceções por Arquivos Nao PDF: {len(doc_folder.notPdfFiles)}
 ## ---- ##
 - Total de Arquivos Sem Problemas: {totalSuccessFiles}
 - Total de Nomes Procurados: {len(doc_folder.totalFiles)}
