@@ -5,7 +5,7 @@ from util.UserInterface import *
 def main():
     interface = UserInterface                     ## Inicia o objeto de interface do usuario
     doc_names = DocNamesFile("docNamesFile.txt")  ## Inicia o objeto com o caminho do arquivo com os nomes
-    doc_folder = DocFolder("pastaProcurar")       ## Inicia o objeto com o caminho da pasta dos arquivos
+    doc_folder = DocFolder(r"C:\PastaTeste")       ## Inicia o objeto com o caminho da pasta dos arquivos
     
     doc_names.read_names()
     # Verifica se a lista de nomes está vazia

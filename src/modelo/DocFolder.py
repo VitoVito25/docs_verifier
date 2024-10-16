@@ -84,6 +84,7 @@ class DocFolder:
         except FileNotFoundError:
             print(f"Erro: A pasta '{self.folder_path}' não foi encontrada.")
 
+
     
 
             
