@@ -9,7 +9,7 @@ def main():
     
     doc_names.read_names()
     interface.print_doc_names(doc_names.names_list)
-    ##doc_folder.search_files(names_list)
+    doc_folder.search_files(doc_names.names_list)
 
 
 
