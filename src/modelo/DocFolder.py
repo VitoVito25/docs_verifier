@@ -5,6 +5,10 @@ import os
 class DocFolder:
     def __init__(self, folder_path):
         self.folder_path = Path(folder_path)
+        self.totalFiles = []
+        self.notPdfFiles = []
+        self.corruptedFiles = []
+        self.notFoundFiles = []
 
     def is_pdf(self, file_name):
         """
@@ -46,35 +50,43 @@ class DocFolder:
             return False
 
     def search_files(self, doc_names_list):
+
+        doc_status = {name : False for name in doc_names_list}
+        self.totalFiles = doc_names_list
+
         try:
             # Verifica se o caminho fornecido é uma pasta válida
             if not self.folder_path.is_dir():
                 raise FileNotFoundError
             
             for file in os.listdir(self.folder_path):
+
                 # Remove a extensão do arquivo e converte para minúsculas
                 file_without_extension = os.path.splitext(file)[0].lower()
 
                 # Verifica se o nome do arquivo sem extensão está na lista fornecida
                 if file_without_extension in doc_names_list:
-                    print(f"O arquivo '{file}' está na pasta!.")
+                    doc_status[file_without_extension] = True # Atualiza o status para encontrado
+
+                    ## Verifica se é um PDF
+                    if not self.is_pdf(file):
+                        self.notPdfFiles.append(file)
+                        continue
 
                     ## Verifica se esta corrompido
-                    if not self.is_pdf(file):
-                        print(f"O arquivo '{file}' não é um PDF.")
-                        continue
-
                     if not self.test_pdf_open(file):
-                        print(f"O arquivo '{file}' esta corrompido ou protegido.")
+                        self.corruptedFiles.append(file)
                         continue
+                
+            self.notFoundFiles = [name for name, found in doc_status.items() if not found]
 
-
-
+            print(doc_status)
                     
-                    
-
         except FileNotFoundError:
             print(f"Erro: A pasta '{self.folder_path}' não foi encontrada.")
+
+    
+
             
 
 
