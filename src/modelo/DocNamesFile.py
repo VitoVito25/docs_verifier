@@ -5,6 +5,10 @@ class DocNamesFile:
         self.file_path = Path(file_path)
 
     def read_names(self):
+        """
+            Metodo para ler os nomes dos arquivos dentro de um arquivo txt
+            :param name_list: Lista de nomes a serem impressos na tela
+        """
         try:
             with self.file_path.open('r', encoding='utf-8') as file:
                 # Lê todas as linhas, removendo quebras de linha e espaços desnecessários
