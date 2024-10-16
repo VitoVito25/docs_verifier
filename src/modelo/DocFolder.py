@@ -41,15 +41,16 @@ class DocFolder:
                 # Tenta acessar as páginas do PDF
                 if reader.pages:
                     return True
-        except (PyPDF2.errors.PdfReadError, FileNotFoundError):
-            # Caso o PDF esteja corrompido ou não seja encontrado
-            return False
-        except Exception as e:
-            # Qualquer outro erro que impeça a abertura do arquivo
-            print(f"Erro ao abrir o arquivo: {e}")
+        except (PyPDF2.errors.PdfReadError):
+            # Caso o PDF esteja corrompido
             return False
 
     def search_files(self, doc_names_list):
+        """
+        Função para procurar arquivos com base em uma lista dentro da pasta
+        
+        :param doc_names_list: Lista de nomes a serem procurados
+        """
 
         doc_status = {name : False for name in doc_names_list}
         self.totalFiles = doc_names_list
@@ -79,8 +80,6 @@ class DocFolder:
                         continue
                 
             self.notFoundFiles = [name for name, found in doc_status.items() if not found]
-
-            print(doc_status)
                     
         except FileNotFoundError:
             print(f"Erro: A pasta '{self.folder_path}' não foi encontrada.")
